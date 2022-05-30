@@ -14,7 +14,7 @@
 Приложение реализует API со следующими эндпоинтами:
 
    `POST /user/registration`  
-   `DELETE /delete/user (queryParams: String username, String password)`
+   `DELETE /user/delete (queryParams: String username, String password)`
 
    `GET /account (queryParams: String username, String password)`  
    `POST /account/balance (queryParam: Integer id)`
@@ -66,7 +66,7 @@
 
 <hr>
 
-### `DELETE /delete/user`
+### `DELETE /user/delete`
 В URL необходимо указать следующие query params:
 >"username": {String} (required)  
 >"password": {String} (required)    
