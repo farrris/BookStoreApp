@@ -7,11 +7,22 @@
 
 <hr>
 
-Приложение написано на Java 18 и Spring Boot 2.7.0 версии + MySql Database + Система сборки Gradle.   
+### Технологии:
+1. JDK 18
+2. Gradle 7.4.2
+3. Spring Boot
+4. MySQL
+5. Docker
+
+### Запуск:
+
+Чтобы запустить проект, в корне проекта `gradle build` (не обращать внимание на `Build Failed` из-за проблем с mysql, в результате всё будет нормально), затем `docker-compose up`  
+
+P.S: я долго бился, но сборку проекта в докер поставить не удалось, ибо проект собирается раньше сборки контейнера mysql, и весь процесс останавливается с ошибкой `BUILD FAILED`
 
 <hr>
 
-Приложение реализует API со следующими эндпоинтами:
+### Приложение реализует API со следующими эндпоинтами:
 
    `POST /user/registration`  
    `DELETE /user/delete (queryParams: String username, String password)`

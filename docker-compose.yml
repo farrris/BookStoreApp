@@ -1,18 +1,8 @@
-version: "3.7"
+version: "3"
 services:
-  api_service:
-    build: .
-    restart: always
-    ports:
-      - 8080:8080
-    depends_on:
-      - mysql_db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/bookstore2022
-      SPRING_DATASOURCE_USERNAME: bookstore
-      SPRING_DATASOURCE_PASSWORD: bookstore
   mysql_db:
     image: "mysql:8.0"
+    hostname: mysql
     restart: always
     ports:
       - 3306:3306
@@ -21,3 +11,16 @@ services:
       MYSQL_USER: bookstore
       MYSQL_PASSWORD: bookstore
       MYSQL_ROOT_PASSWORD: root
+  api_service:
+    build: .
+    restart: on-failure
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql_db
+    links:
+      - mysql_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/bookstore2022
+      SPRING_DATASOURCE_USERNAME: bookstore
+      SPRING_DATASOURCE_PASSWORD: bookstore
