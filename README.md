@@ -9,7 +9,7 @@
 
 ### Технологии:
 1. JDK 18
-2. Gradle 7.4.2
+2. Gradle
 3. Spring Boot
 4. MySQL
 5. Docker
