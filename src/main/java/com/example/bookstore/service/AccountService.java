@@ -2,7 +2,6 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.entity.AccountEntity;
 import com.example.bookstore.entity.AccountProductEntity;
-import com.example.bookstore.entity.ProductEntity;
 import com.example.bookstore.entity.UserEntity;
 import com.example.bookstore.exception.FillAllFieldsException;
 import com.example.bookstore.exception.UserNotFoundException;
@@ -13,14 +12,10 @@ import com.example.bookstore.repository.AccountRepo;
 import com.example.bookstore.repository.ProductRepo;
 import com.example.bookstore.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class AccountService {
@@ -65,7 +60,7 @@ public class AccountService {
 
     }
 
-    public String topUpBalance(Long id, AccountEntity json) throws FillAllFieldsException, UserNotFoundException {
+    public Integer topUpBalance(Long id, AccountEntity json) throws FillAllFieldsException, UserNotFoundException {
         if (json.getBalance() == null) {
             throw new FillAllFieldsException("Заполните все поля!");
         }
@@ -79,7 +74,7 @@ public class AccountService {
             account.setBalance(json.getBalance() + account.getBalance());
             accountRepo.save(account);
 
-            String balance = json.getBalance().toString();
+            Integer balance = json.getBalance();
 
             return balance;
         }

@@ -44,7 +44,7 @@ public class AccountController {
     @PostMapping("/balance")
     public ResponseEntity topUpBalance(@RequestParam Long id, @RequestBody AccountEntity json, HttpServletRequest request) {
         try {
-            Object count = accountService.topUpBalance(id, json);
+            Integer count = accountService.topUpBalance(id, json);
             LOGGER.info("Account: [200 OK] " + request.getRequestURL());
             return ResponseEntity.ok("Баланс пополнен на " + count.toString() + " рублей!");
         } catch (UserNotFoundException e) {

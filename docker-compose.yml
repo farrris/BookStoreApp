@@ -11,6 +11,8 @@ services:
       MYSQL_USER: bookstore
       MYSQL_PASSWORD: bookstore
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/docker-entrypoint-initdb.d
   api_service:
     build: .
     restart: on-failure

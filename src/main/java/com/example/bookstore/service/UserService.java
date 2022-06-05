@@ -20,7 +20,7 @@ public class UserService {
     @Autowired
     private AccountRepo accountRepo;
 
-    public UserEntity registration(UserEntity user) throws UserAlreadyExistException, FillAllFieldsException {
+    public boolean registration(UserEntity user) throws UserAlreadyExistException, FillAllFieldsException {
         if(userRepo.findByUsername(user.getUsername()) != null) {
             throw new UserAlreadyExistException("Такой пользователь уже существует");
         }
@@ -32,7 +32,7 @@ public class UserService {
             AccountEntity account = new AccountEntity(0, user);
             accountRepo.save(account);
             user.setAccount(account);
-            return userRepo.save(user);
+            return true;
         }
     }
 
